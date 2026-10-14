@@ -1,0 +1,30 @@
+---
+- name: Install and configure Harbor prerequisites
+  hosts: local
+  become: true
+
+  tasks:
+    - name: Install Harbor prerequisites
+      ansible.builtin.apt:
+        name:
+          - curl
+          - wget
+          - tar
+          - openssl
+        state: present
+        update_cache: true
+
+    - name: Verify Docker is running
+      ansible.builtin.service:
+        name: docker
+        state: started
+        enabled: true
+
+    - name: Verify Docker Compose
+      ansible.builtin.command: docker compose version
+      register: compose_version
+      changed_when: false
+
+    - name: Display Docker Compose version
+      ansible.builtin.debug:
+        var: compose_version.stdout

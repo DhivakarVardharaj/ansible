@@ -1,0 +1,21 @@
+---
+- name: Install and configure SonarQube
+  hosts: local
+  become: true
+
+  tasks:
+    - name: Ensure Docker is running
+      ansible.builtin.service:
+        name: docker
+        state: started
+        enabled: true
+
+    - name: Create SonarQube container
+      community.docker.docker_container:
+        name: sonarqube
+        image: sonarqube:lts-community
+        state: started
+        restart_policy: unless-stopped
+        published_ports:
+          - "127.0.0.1:9000:9000"
+        memory: 1200M
