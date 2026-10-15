@@ -1,6 +1,6 @@
 ---
 - name: Install and configure Docker and Docker Compose
-  hosts: local
+  hosts: managed
   become: true
 
   tasks:

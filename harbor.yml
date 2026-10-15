@@ -1,6 +1,6 @@
 ---
 - name: Install and configure Harbor prerequisites
-  hosts: local
+  hosts: managed
   become: true
 
   tasks:

@@ -1,6 +1,6 @@
 ---
 - name: Install and configure SonarQube
-  hosts: local
+  hosts: managed
   become: true
 
   tasks:

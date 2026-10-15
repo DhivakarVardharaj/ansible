@@ -1,0 +1,17 @@
+*.pem
+.env
+.env.*
+!.env.example
+vault-password-file
+.vault-pass
+.retry
+__pycache__/
+*.pyc
+*.backup
+*.bak
+*.error-backup
+*.fix-backup
+*.permission-backup
+*.final-backup
+*.last-backup
+yaml-backup/
